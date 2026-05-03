@@ -54,20 +54,21 @@ button{
 .subsection{display:none;}
 .subsection.active{display:block;}
 
-/* MASONRY GRID (keeps aspect ratios naturally) */
+/* SIMPLE GRID (NO FIXED HEIGHTS ANYWHERE) */
 .grid{
   max-width:1000px;
   margin:auto;
-  column-count:2;
-  column-gap:15px;
   padding:20px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:15px;
 }
 
 .photo{
-  break-inside: avoid;
-  margin-bottom:15px;
+  flex:1 1 calc(50% - 15px);
 }
 
+/* CRITICAL FIX: preserve real image ratio */
 .photo img{
   width:100%;
   height:auto;
