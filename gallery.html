@@ -8,42 +8,27 @@
 <style>
 body{
   margin:0;
-  font-family:Arial, sans-serif;
+  font-family:Arial;
   background:#0b0b0b;
   color:white;
 }
 
-nav{
-  padding:20px;
-  text-align:center;
-  border-bottom:1px solid #222;
-}
-
-nav a{
-  color:white;
-  margin:0 12px;
-  text-decoration:none;
-  opacity:0.7;
-}
-
-nav a:hover{opacity:1;}
-
 h1{text-align:center;}
 
-.menu,.submenu{
+.menu, .submenu{
   display:flex;
   justify-content:center;
-  gap:12px;
+  gap:10px;
   flex-wrap:wrap;
   margin:20px;
 }
 
 button{
-  background:#161616;
-  color:white;
+  padding:10px 14px;
   border:none;
-  padding:10px 16px;
-  border-radius:10px;
+  border-radius:8px;
+  background:#222;
+  color:white;
   cursor:pointer;
 }
 
@@ -54,26 +39,20 @@ button{
 .subsection{display:none;}
 .subsection.active{display:block;}
 
-/* SIMPLE GRID (NO FIXED HEIGHTS ANYWHERE) */
+/* IMPORTANT: NO GRID HEIGHT CONTROL, NO CROPPING */
 .grid{
   max-width:1000px;
   margin:auto;
   padding:20px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:15px;
 }
 
-.photo{
-  flex:1 1 calc(50% - 15px);
-}
-
-/* CRITICAL FIX: preserve real image ratio */
+/* FIX: each image keeps ORIGINAL ratio */
 .photo img{
   width:100%;
   height:auto;
   display:block;
-  border-radius:12px;
+  margin-bottom:15px;
+  border-radius:10px;
   cursor:pointer;
 }
 
@@ -96,11 +75,6 @@ button{
 
 <body>
 
-<nav>
-  <a href="#">Home</a>
-  <a href="#">Gallery</a>
-</nav>
-
 <h1>Gallery</h1>
 
 <div class="menu">
@@ -112,24 +86,16 @@ button{
 <!-- NAMIBIA -->
 <div id="namibia" class="section active">
   <div class="grid">
-    <div class="photo">
-      <img src="Brukkaros.jpg" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo">
-      <img src="Kolmanskop.jpg" onclick="openLightbox(this.src)">
-    </div>
+    <img src="Brukkaros.jpg" onclick="openLightbox(this.src)">
+    <img src="Kolmanskop.jpg" onclick="openLightbox(this.src)">
   </div>
 </div>
 
 <!-- KENYA -->
 <div id="kenya" class="section">
   <div class="grid">
-    <div class="photo">
-      <img src="Kenya1.jpg" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo">
-      <img src="Kenya2.jpg" onclick="openLightbox(this.src)">
-    </div>
+    <img src="Kenya1.jpg" onclick="openLightbox(this.src)">
+    <img src="Kenya2.jpg" onclick="openLightbox(this.src)">
   </div>
 </div>
 
@@ -144,31 +110,21 @@ button{
 
   <div id="volcanoes" class="subsection active">
     <div class="grid">
-      <div class="photo">
-        <img src="Bishoftu.jpg" onclick="openLightbox(this.src)">
-      </div>
-      <div class="photo">
-        <img src="Bode-Ameda.jpg" onclick="openLightbox(this.src)">
-      </div>
+      <img src="Bishoftu.jpg" onclick="openLightbox(this.src)">
+      <img src="Bode-Ameda.jpg" onclick="openLightbox(this.src)">
     </div>
   </div>
 
   <div id="landscape" class="subsection">
     <div class="grid">
-      <div class="photo">
-        <img src="Tido.jpg" onclick="openLightbox(this.src)">
-      </div>
+      <img src="Tido.jpg" onclick="openLightbox(this.src)">
     </div>
   </div>
 
   <div id="wildlife" class="subsection">
     <div class="grid">
-      <div class="photo">
-        <img src="stork.jpg" onclick="openLightbox(this.src)">
-      </div>
-      <div class="photo">
-        <img src="flamingos.jpg" onclick="openLightbox(this.src)">
-      </div>
+      <img src="stork.jpg" onclick="openLightbox(this.src)">
+      <img src="flamingos.jpg" onclick="openLightbox(this.src)">
     </div>
   </div>
 
@@ -181,14 +137,8 @@ button{
 
 <script>
 function show(id){
-
-  document.querySelectorAll('.section').forEach(s=>{
-    s.classList.remove('active');
-  });
-
-  document.querySelectorAll('.subsection').forEach(s=>{
-    s.classList.remove('active');
-  });
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.subsection').forEach(s=>s.classList.remove('active'));
 
   document.getElementById(id).classList.add('active');
 
@@ -197,14 +147,9 @@ function show(id){
 }
 
 function showSub(id){
-
-  let container = document.getElementById("ethiopia");
-
-  container.querySelectorAll('.subsection').forEach(s=>{
-    s.classList.remove('active');
-  });
-
-  container.querySelector('#' + id).classList.add('active');
+  let parent = document.getElementById("ethiopia");
+  parent.querySelectorAll('.subsection').forEach(s=>s.classList.remove('active'));
+  parent.querySelector('#' + id).classList.add('active');
 }
 
 function openLightbox(src){
