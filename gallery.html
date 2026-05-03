@@ -29,13 +29,12 @@ nav a{
 
 nav a:hover{opacity:1;}
 
-/* TITLE */
 h1{
   text-align:center;
   margin-top:30px;
 }
 
-/* BUTTONS */
+/* MENU */
 .menu{
   display:flex;
   justify-content:center;
@@ -51,51 +50,57 @@ h1{
   padding:15px 25px;
   border-radius:10px;
   cursor:pointer;
-  font-size:15px;
-}
-
-.menu button:hover{
-  background:#2a2a2a;
 }
 
 /* SECTIONS */
-.section{
-  display:none;
-}
+.section{display:none;}
+.section.active{display:block;}
 
-.section.active{
-  display:block;
-}
-
-/* GRID (2 FOTKY VEDLE SEBE) */
+/* GRID */
 .grid{
   max-width:1000px;
   margin:0 auto;
-  padding:20px;
   display:grid;
   grid-template-columns:repeat(2, 1fr);
   gap:20px;
-  box-sizing:border-box;
-}
-
-/* FOTKA */
-.photo{
-  background:#111;
-  border-radius:12px;
-  padding:10px;
+  padding:20px;
 }
 
 .photo img{
   width:100%;
-  display:block;
-  border-radius:10px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.photo img:hover{
+  transform:scale(1.02);
 }
 
 .photo p{
   text-align:center;
-  margin-top:8px;
-  font-size:14px;
   opacity:0.7;
+  font-size:14px;
+}
+
+/* LIGHTBOX */
+#lightbox{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.95);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+#lightbox img{
+  max-width:95%;
+  max-height:95%;
+  border-radius:10px;
 }
 </style>
 </head>
@@ -123,22 +128,22 @@ h1{
   <div class="grid">
 
     <div class="photo">
-      <img src="Brukkaros.jpg">
+      <img src="Brukkaros.jpg" onclick="openLightbox(this.src)">
       <p>Brukkaros Volcano</p>
     </div>
 
     <div class="photo">
-      <img src="Kolmanskop.jpg">
-      <p>Kolmanskop Desert Town</p>
+      <img src="Kolmanskop.jpg" onclick="openLightbox(this.src)">
+      <p>Kolmanskop</p>
     </div>
 
     <div class="photo">
-      <img src="Kolmanskop (1).jpg">
+      <img src="Kolmanskop (1).jpg" onclick="openLightbox(this.src)">
       <p>Desert Houses</p>
     </div>
 
     <div class="photo">
-      <img src="Kolmanskop (2).jpg">
+      <img src="Kolmanskop (2).jpg" onclick="openLightbox(this.src)">
       <p>Sand Interior</p>
     </div>
 
@@ -150,12 +155,12 @@ h1{
   <div class="grid">
 
     <div class="photo">
-      <img src="Kenya1.jpg">
+      <img src="Kenya1.jpg" onclick="openLightbox(this.src)">
       <p>Kenya Landscape</p>
     </div>
 
     <div class="photo">
-      <img src="Kenya2.jpg">
+      <img src="Kenya2.jpg" onclick="openLightbox(this.src)">
       <p>Kenya Wildlife</p>
     </div>
 
@@ -167,19 +172,35 @@ h1{
   <div class="grid">
 
     <div class="photo">
-      <img src="Tido.jpg">
+      <img src="Tido.jpg" onclick="openLightbox(this.src)">
       <p>Ethiopia Scene</p>
     </div>
 
   </div>
 </div>
 
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+  <img id="lightboxImg">
+</div>
+
 <script>
 function show(id){
-  document.querySelectorAll('.section').forEach(el=>{
-    el.classList.remove('active');
+  document.querySelectorAll('.section').forEach(s=>{
+    s.classList.remove('active');
   });
   document.getElementById(id).classList.add('active');
+}
+
+/* OPEN */
+function openLightbox(src){
+  document.getElementById("lightbox").style.display = "flex";
+  document.getElementById("lightboxImg").src = src;
+}
+
+/* CLOSE */
+function closeLightbox(){
+  document.getElementById("lightbox").style.display = "none";
 }
 </script>
 
