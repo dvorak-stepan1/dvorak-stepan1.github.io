@@ -146,6 +146,7 @@ button{
     </div>
   </div>
 
+  <!-- TIDO ONLY HERE (NO DUPLICATION) -->
   <div id="landscape" class="subsection">
     <div class="grid">
       <div class="photo">
@@ -175,22 +176,17 @@ button{
 <script>
 function show(id){
 
-  // hide all main sections
   document.querySelectorAll('.section').forEach(s=>{
     s.classList.remove('active');
   });
 
-  // hide all subsections (IMPORTANT FIX)
   document.querySelectorAll('.subsection').forEach(s=>{
     s.classList.remove('active');
   });
 
-  // show selected section
   document.getElementById(id).classList.add('active');
 
-  // activate first submenu inside it (if exists)
-  let container = document.getElementById(id);
-  let first = container.querySelector('.subsection');
+  let first = document.getElementById(id).querySelector('.subsection');
   if(first) first.classList.add('active');
 }
 
