@@ -30,6 +30,7 @@ nav a:hover{opacity:1;}
 
 h1{text-align:center;}
 
+/* MENU */
 .menu,.submenu{
   display:flex;
   justify-content:center;
@@ -47,12 +48,14 @@ button{
   cursor:pointer;
 }
 
+/* SECTIONS */
 .section{display:none;}
 .section.active{display:block;}
 
 .subsection{display:none;}
 .subsection.active{display:block;}
 
+/* GRID */
 .grid{
   max-width:1000px;
   margin:auto;
@@ -177,14 +180,20 @@ function show(id){
   document.querySelectorAll('.section').forEach(s=>{
     s.classList.remove('active');
   });
+
   document.getElementById(id).classList.add('active');
 
-  document.querySelectorAll('.subsection').forEach(s=>{
-    s.classList.remove('active');
-  });
+  // reset only inside active section
+  let container = document.getElementById(id);
 
-  let first = document.querySelector('#'+id+' .subsection');
-  if(first) first.classList.add('active');
+  if(container){
+    container.querySelectorAll('.subsection').forEach(s=>{
+      s.classList.remove('active');
+    });
+
+    let first = container.querySelector('.subsection');
+    if(first) first.classList.add('active');
+  }
 }
 
 function showSub(id){
