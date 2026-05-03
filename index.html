@@ -6,112 +6,72 @@
 <title>Štěpán Dvořák Photography</title>
 
 <style>
-html {
-  scroll-behavior: smooth;
-}
-
 body{
   margin:0;
-  font-family: Arial, sans-serif;
+  font-family:Arial, sans-serif;
   background:#0b0b0b;
   color:white;
 }
 
 /* NAV */
 nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  background:rgba(11,11,11,0.95);
-  backdrop-filter: blur(10px);
   display:flex;
   justify-content:center;
-  gap:25px;
-  padding:15px;
+  gap:20px;
+  padding:20px;
   border-bottom:1px solid #222;
-  z-index:1000;
 }
 
-nav a{
+nav button{
+  background:none;
+  border:none;
   color:white;
-  text-decoration:none;
-  font-size:14px;
   opacity:0.7;
-  transition:0.2s;
+  cursor:pointer;
+  font-size:14px;
 }
 
-nav a:hover{
+nav button:hover{
   opacity:1;
 }
 
-/* SECTIONS */
-section{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  padding:100px 20px;
+/* PAGES */
+.page{
+  display:none;
+  padding:60px 20px;
   text-align:center;
 }
 
-h1{
-  font-size:48px;
-  margin-bottom:10px;
-  letter-spacing:1px;
+.active{
+  display:block;
 }
 
-h2{
-  font-size:28px;
-  margin-bottom:30px;
-  opacity:0.9;
-}
-
-p{
-  max-width:600px;
-  opacity:0.7;
-  line-height:1.6;
-}
-
-/* GALLERY */
-.gallery{
+/* HOME TILES */
+.grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
-  gap:15px;
-  width:90%;
-  max-width:1000px;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+  max-width:900px;
+  margin:50px auto;
 }
 
-.gallery img{
-  width:100%;
-  border-radius:10px;
+.card{
+  background:#161616;
+  padding:40px;
+  border-radius:12px;
+  cursor:pointer;
   transition:0.3s;
 }
 
-.gallery img:hover{
-  transform:scale(1.03);
-}
-
-/* HERO */
-.hero{
-  height:100vh;
+.card:hover{
+  transform:scale(1.05);
+  background:#222;
 }
 
 /* IMAGE */
-.hero img{
-  max-width:300px;
-  border-radius:12px;
-  margin-top:30px;
-  box-shadow:0 10px 40px rgba(0,0,0,0.5);
-}
-
-/* FOOTER */
-footer{
-  padding:40px;
-  text-align:center;
-  font-size:12px;
-  opacity:0.5;
-  border-top:1px solid #222;
+img{
+  max-width:80%;
+  border-radius:10px;
 }
 </style>
 </head>
@@ -120,55 +80,55 @@ footer{
 
 <!-- NAV -->
 <nav>
-  <a href="#home">Home</a>
-  <a href="#portfolio">Portfolio</a>
-  <a href="#gallery">Gallery</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
+  <button onclick="show('home')">Home</button>
+  <button onclick="show('portfolio')">Portfolio</button>
+  <button onclick="show('gallery')">Gallery</button>
+  <button onclick="show('about')">About</button>
+  <button onclick="show('contact')">Contact</button>
 </nav>
 
 <!-- HOME -->
-<section id="home" class="hero">
-  <h1>Štěpán Dvořák</h1>
-  <h2>Photography</h2>
-  <p>Landscape & documentary photography capturing atmosphere, light and place.</p>
-</section>
+<div id="home" class="page active">
+  <h1>Štěpán Dvořák Photography</h1>
+
+  <div class="grid">
+    <div class="card" onclick="show('portfolio')">Portfolio</div>
+    <div class="card" onclick="show('gallery')">Gallery</div>
+    <div class="card" onclick="show('about')">About</div>
+    <div class="card" onclick="show('contact')">Contact</div>
+  </div>
+</div>
 
 <!-- PORTFOLIO -->
-<section id="portfolio">
-  <h2>Portfolio</h2>
-  <div class="gallery">
-    <img src="Tido.jpg">
-  </div>
-</section>
+<div id="portfolio" class="page">
+  <h1>Portfolio</h1>
+  <img src="Tido.jpg">
+</div>
 
 <!-- GALLERY -->
-<section id="gallery">
-  <h2>Gallery</h2>
-  <div class="gallery">
-    <img src="Tido.jpg">
-    <img src="Tido.jpg">
-    <img src="Tido.jpg">
-  </div>
-</section>
+<div id="gallery" class="page">
+  <h1>Gallery</h1>
+  <img src="Tido.jpg">
+</div>
 
 <!-- ABOUT -->
-<section id="about">
-  <h2>About</h2>
-  <p>
-    Geologist and photographer focused on capturing natural landscapes, human presence and visual storytelling.
-  </p>
-</section>
+<div id="about" class="page">
+  <h1>About</h1>
+  <p>Geologist and photographer focused on landscapes and light.</p>
+</div>
 
 <!-- CONTACT -->
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: dvorakste@natur.cuni.cz</p>
-</section>
+<div id="contact" class="page">
+  <h1>Contact</h1>
+  <p>dvorakste@natur.cuni.cz</p>
+</div>
 
-<footer>
-  © 2026 Štěpán Dvořák Photography
-</footer>
+<script>
+function show(page){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(page).classList.add('active');
+}
+</script>
 
 </body>
 </html>
