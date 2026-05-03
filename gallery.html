@@ -29,11 +29,15 @@ button{
   cursor:pointer;
 }
 
+button:hover{
+  background:#2a2a2a;
+}
+
 /* SECTIONS */
 .section{display:none;}
 .section.active{display:block;}
 
-/* SUB */
+/* SUBMENU */
 .submenu{
   margin:20px;
 }
@@ -51,26 +55,38 @@ button{
   padding:20px;
 }
 
+/* IMAGES - ORIGINAL RATIO */
 .photo img{
   width:100%;
-  height:auto;
+  height:auto;          /* 🔥 keeps real aspect ratio */
   border-radius:10px;
   cursor:pointer;
+  transition:0.2s;
+}
+
+.photo img:hover{
+  transform:scale(1.02);
 }
 
 /* LIGHTBOX */
 #lightbox{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.95);
+  background:rgba(0,0,0,0.9);
   display:none;
   justify-content:center;
   align-items:center;
+  cursor:zoom-out;
 }
 
+/* 🔥 CONTROLLED SIZE (NOT FULLSCREEN) */
 #lightbox img{
-  max-width:95vw;
-  max-height:95vh;
+  width:auto;
+  height:auto;
+  max-width:60vw;   /* ~2x feel */
+  max-height:70vh;
+  object-fit:contain;
+  border-radius:10px;
 }
 </style>
 </head>
@@ -88,16 +104,24 @@ button{
 <!-- NAMIBIA -->
 <div id="namibia" class="section active">
   <div class="grid">
-    <div class="photo"><img src="Brukkaros.jpg" onclick="openLightbox(this.src)"></div>
-    <div class="photo"><img src="Kolmanskop.jpg" onclick="openLightbox(this.src)"></div>
+    <div class="photo">
+      <img src="Brukkaros.jpg" onclick="openLightbox(this.src)">
+    </div>
+    <div class="photo">
+      <img src="Kolmanskop.jpg" onclick="openLightbox(this.src)">
+    </div>
   </div>
 </div>
 
 <!-- KENYA -->
 <div id="kenya" class="section">
   <div class="grid">
-    <div class="photo"><img src="Kenya1.jpg" onclick="openLightbox(this.src)"></div>
-    <div class="photo"><img src="Kenya2.jpg" onclick="openLightbox(this.src)"></div>
+    <div class="photo">
+      <img src="Kenya1.jpg" onclick="openLightbox(this.src)">
+    </div>
+    <div class="photo">
+      <img src="Kenya2.jpg" onclick="openLightbox(this.src)">
+    </div>
   </div>
 </div>
 
@@ -110,23 +134,36 @@ button{
     <button onclick="showSub('wildlife')">Wildlife</button>
   </div>
 
+  <!-- VOLCANOES -->
   <div id="volcanoes" class="subsection active">
     <div class="grid">
-      <div class="photo"><img src="Bishoftu.jpg" onclick="openLightbox(this.src)"></div>
-      <div class="photo"><img src="Bode-Ameda.jpg" onclick="openLightbox(this.src)"></div>
+      <div class="photo">
+        <img src="Bishoftu.jpg" onclick="openLightbox(this.src)">
+      </div>
+      <div class="photo">
+        <img src="Bode-Ameda.jpg" onclick="openLightbox(this.src)">
+      </div>
     </div>
   </div>
 
+  <!-- LANDSCAPE -->
   <div id="landscape" class="subsection">
     <div class="grid">
-      <div class="photo"><img src="Tido.jpg" onclick="openLightbox(this.src)"></div>
+      <div class="photo">
+        <img src="Tido.jpg" onclick="openLightbox(this.src)">
+      </div>
     </div>
   </div>
 
+  <!-- WILDLIFE -->
   <div id="wildlife" class="subsection">
     <div class="grid">
-      <div class="photo"><img src="stork.jpg" onclick="openLightbox(this.src)"></div>
-      <div class="photo"><img src="flamingos.jpg" onclick="openLightbox(this.src)"></div>
+      <div class="photo">
+        <img src="stork.jpg" onclick="openLightbox(this.src)">
+      </div>
+      <div class="photo">
+        <img src="flamingos.jpg" onclick="openLightbox(this.src)">
+      </div>
     </div>
   </div>
 
