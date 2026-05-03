@@ -30,7 +30,6 @@ nav a:hover{opacity:1;}
 
 h1{text-align:center;}
 
-/* MENU */
 .menu,.submenu{
   display:flex;
   justify-content:center;
@@ -108,24 +107,16 @@ button{
 <!-- NAMIBIA -->
 <div id="namibia" class="section active">
   <div class="grid">
-    <div class="photo">
-      <img src="Brukkaros.jpg" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo">
-      <img src="Kolmanskop.jpg" onclick="openLightbox(this.src)">
-    </div>
+    <div class="photo"><img src="Brukkaros.jpg" onclick="openLightbox(this.src)"></div>
+    <div class="photo"><img src="Kolmanskop.jpg" onclick="openLightbox(this.src)"></div>
   </div>
 </div>
 
 <!-- KENYA -->
 <div id="kenya" class="section">
   <div class="grid">
-    <div class="photo">
-      <img src="Kenya1.jpg" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo">
-      <img src="Kenya2.jpg" onclick="openLightbox(this.src)">
-    </div>
+    <div class="photo"><img src="Kenya1.jpg" onclick="openLightbox(this.src)"></div>
+    <div class="photo"><img src="Kenya2.jpg" onclick="openLightbox(this.src)"></div>
   </div>
 </div>
 
@@ -138,33 +129,26 @@ button{
     <button onclick="showSub('wildlife')">Wildlife</button>
   </div>
 
+  <!-- VOLCANOES -->
   <div id="volcanoes" class="subsection active">
     <div class="grid">
-      <div class="photo">
-        <img src="Bishoftu.jpg" onclick="openLightbox(this.src)">
-      </div>
-      <div class="photo">
-        <img src="Bode-Ameda.jpg" onclick="openLightbox(this.src)">
-      </div>
+      <div class="photo"><img src="Bishoftu.jpg" onclick="openLightbox(this.src)"></div>
+      <div class="photo"><img src="Bode-Ameda.jpg" onclick="openLightbox(this.src)"></div>
     </div>
   </div>
 
+  <!-- LANDSCAPE -->
   <div id="landscape" class="subsection">
     <div class="grid">
-      <div class="photo">
-        <img src="Tido.jpg" onclick="openLightbox(this.src)">
-      </div>
+      <div class="photo"><img src="Tido.jpg" onclick="openLightbox(this.src)"></div>
     </div>
   </div>
 
+  <!-- WILDLIFE -->
   <div id="wildlife" class="subsection">
     <div class="grid">
-      <div class="photo">
-        <img src="stork.jpg" onclick="openLightbox(this.src)">
-      </div>
-      <div class="photo">
-        <img src="flamingos.jpg" onclick="openLightbox(this.src)">
-      </div>
+      <div class="photo"><img src="stork.jpg" onclick="openLightbox(this.src)"></div>
+      <div class="photo"><img src="flamingos.jpg" onclick="openLightbox(this.src)"></div>
     </div>
   </div>
 
@@ -181,19 +165,16 @@ function show(id){
     s.classList.remove('active');
   });
 
-  document.getElementById(id).classList.add('active');
+  let section = document.getElementById(id);
+  section.classList.add('active');
 
-  // reset only inside active section
-  let container = document.getElementById(id);
+  // ALWAYS FORCE VOLCANOES FIRST (fix chaos)
+  section.querySelectorAll('.subsection').forEach(s=>{
+    s.classList.remove('active');
+  });
 
-  if(container){
-    container.querySelectorAll('.subsection').forEach(s=>{
-      s.classList.remove('active');
-    });
-
-    let first = container.querySelector('.subsection');
-    if(first) first.classList.add('active');
-  }
+  let defaultSub = section.querySelector('#volcanoes');
+  if(defaultSub) defaultSub.classList.add('active');
 }
 
 function showSub(id){
