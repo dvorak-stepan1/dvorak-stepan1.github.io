@@ -11,13 +11,13 @@ body{
   font-family:Arial, sans-serif;
   background:#0b0b0b;
   color:white;
-  text-align:center;
 }
 
 /* NAV */
 nav{
   padding:20px;
   border-bottom:1px solid #222;
+  text-align:center;
 }
 
 nav a{
@@ -27,11 +27,11 @@ nav a{
   opacity:0.7;
 }
 
-nav a:hover{
-  opacity:1;
-}
+nav a:hover{opacity:1;}
 
+/* TITLE */
 h1{
+  text-align:center;
   margin-top:30px;
 }
 
@@ -48,54 +48,54 @@ h1{
   background:#161616;
   color:white;
   border:none;
-  padding:18px 28px;
+  padding:15px 25px;
   border-radius:10px;
   cursor:pointer;
-  font-size:16px;
-  transition:0.25s;
+  font-size:15px;
 }
 
 .menu button:hover{
   background:#2a2a2a;
-  transform:scale(1.05);
 }
 
 /* SECTIONS */
 .section{
   display:none;
-  padding:20px;
 }
 
 .section.active{
   display:block;
 }
 
-/* ⭐ GRID = 2 FOTKY VEDLE SEBE */
+/* GRID (2 FOTKY VEDLE SEBE) */
 .grid{
+  max-width:1000px;
+  margin:0 auto;
+  padding:20px;
   display:grid;
   grid-template-columns:repeat(2, 1fr);
   gap:20px;
-  max-width:1000px;
-  margin:0 auto;
+  box-sizing:border-box;
 }
 
-/* každá fotka */
+/* FOTKA */
 .photo{
   background:#111;
-  padding:10px;
   border-radius:12px;
+  padding:10px;
 }
 
 .photo img{
   width:100%;
-  border-radius:10px;
   display:block;
+  border-radius:10px;
 }
 
 .photo p{
+  text-align:center;
   margin-top:8px;
-  opacity:0.7;
   font-size:14px;
+  opacity:0.7;
 }
 </style>
 </head>
@@ -120,9 +120,6 @@ h1{
 
 <!-- NAMIBIA -->
 <div id="namibia" class="section active">
-
-  <h2>Namibia</h2>
-
   <div class="grid">
 
     <div class="photo">
@@ -137,12 +134,12 @@ h1{
 
     <div class="photo">
       <img src="Kolmanskop (1).jpg">
-      <p>Sand Houses</p>
+      <p>Desert Houses</p>
     </div>
 
     <div class="photo">
       <img src="Kolmanskop (2).jpg">
-      <p>Abandoned Interior</p>
+      <p>Sand Interior</p>
     </div>
 
   </div>
@@ -150,9 +147,6 @@ h1{
 
 <!-- KENYA -->
 <div id="kenya" class="section">
-
-  <h2>Kenya</h2>
-
   <div class="grid">
 
     <div class="photo">
@@ -170,19 +164,11 @@ h1{
 
 <!-- ETHIOPIA -->
 <div id="ethiopia" class="section">
-
-  <h2>Ethiopia</h2>
-
   <div class="grid">
 
     <div class="photo">
       <img src="Tido.jpg">
       <p>Ethiopia Scene</p>
-    </div>
-
-    <div class="photo">
-      <img src="Ethiopia2.jpg">
-      <p>Highlands</p>
     </div>
 
   </div>
