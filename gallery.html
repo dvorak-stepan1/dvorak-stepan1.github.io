@@ -36,7 +36,7 @@ h1{
   margin-top:30px;
 }
 
-/* TILES */
+/* BUTTON MENU */
 .menu{
   display:flex;
   justify-content:center;
@@ -61,7 +61,7 @@ h1{
   transform:scale(1.05);
 }
 
-/* CONTENT SECTIONS */
+/* SECTIONS */
 .section{
   display:none;
   padding:30px 20px;
@@ -71,12 +71,24 @@ h1{
   display:block;
 }
 
-/* IMAGES */
-img{
-  max-width:80%;
-  border-radius:12px;
+/* PHOTO GRID */
+.photo{
+  width:45%;
+  display:inline-block;
+  vertical-align:top;
   margin:10px;
+}
+
+.photo img{
+  width:100%;
+  border-radius:12px;
   box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+.photo p{
+  margin-top:8px;
+  opacity:0.7;
+  font-size:14px;
 }
 </style>
 </head>
@@ -94,7 +106,7 @@ img{
 
 <h1>Gallery</h1>
 
-<!-- CLICKABLE TILES -->
+<!-- MENU BUTTONS -->
 <div class="menu">
   <button onclick="show('namibia')">Namibia</button>
   <button onclick="show('kenya')">Kenya</button>
@@ -103,28 +115,55 @@ img{
 
 <!-- NAMIBIA -->
 <div id="namibia" class="section active">
+
   <h2>Namibia</h2>
-  <img src="Brukkaros.jpg" alt="Namibia photo 1">
-  <p>Brukkaros Volcano</p>
-  <img src="Kolmanskop.jpg">
-  <img src="Kolmanskop (1).jpg">
-  <img src="Kolmanskop (2).jpg">
-  <img src="Kolmanskop (3).jpg">
+
+  <div class="photo">
+    <img src="Brukkaros.jpg">
+    <p>Brukkaros Volcano</p>
+  </div>
+
+  <div class="photo">
+    <img src="Kolmanskop.jpg">
+    <p>Kolmanskop Desert Town</p>
+  </div>
+
+  <div class="photo">
+    <img src="Kolmanskop (1).jpg">
+    <p>Sand Houses</p>
+  </div>
+
+  <div class="photo">
+    <img src="Kolmanskop (2).jpg">
+    <p>Abandoned Interior</p>
+  </div>
+
 </div>
 
 <!-- KENYA -->
 <div id="kenya" class="section">
+
   <h2>Kenya</h2>
-  <img src="Kenya1.jpg" alt="Kenya photo 1">
+
+  <div class="photo">
+    <img src="Kenya1.jpg">
+    <p>Kenya Landscape</p>
+  </div>
+
 </div>
 
 <!-- ETHIOPIA -->
 <div id="ethiopia" class="section">
+
   <h2>Ethiopia</h2>
-  <img src="Tido.jpg" alt="Ethiopia photo 1">
+
+  <div class="photo">
+    <img src="Tido.jpg">
+    <p>Ethiopia Scene</p>
+  </div>
+
 </div>
 
-<!-- JS SWITCH -->
 <script>
 function show(id){
   document.querySelectorAll('.section').forEach(el => {
