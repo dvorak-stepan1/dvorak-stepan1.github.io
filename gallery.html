@@ -8,16 +8,16 @@
 <style>
 body{
   margin:0;
-  font-family:Arial;
+  font-family:Arial, sans-serif;
   background:#0b0b0b;
   color:white;
-  text-align:center;
 }
 
 /* NAV */
 nav{
   padding:20px;
   border-bottom:1px solid #222;
+  text-align:center;
 }
 
 nav a{
@@ -29,51 +29,78 @@ nav a{
 
 nav a:hover{opacity:1;}
 
-h1{margin-top:30px;}
+h1{
+  text-align:center;
+  margin-top:30px;
+}
 
-/* BUTTONS */
+/* MENU */
 .menu{
   display:flex;
   justify-content:center;
   gap:15px;
   flex-wrap:wrap;
-  margin:30px;
+  margin:40px 20px;
 }
 
-button{
+.menu button{
   background:#161616;
   color:white;
   border:none;
-  padding:15px 20px;
+  padding:15px 25px;
   border-radius:10px;
   cursor:pointer;
 }
 
-button:hover{background:#2a2a2a;}
-
-/* LEVELS */
+/* SECTIONS */
 .section{display:none;}
 .section.active{display:block;}
 
-.submenu{margin:20px;}
-
+/* GRID */
 .grid{
   max-width:1000px;
   margin:0 auto;
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(2, 1fr);
   gap:20px;
   padding:20px;
 }
 
 .photo img{
   width:100%;
-  border-radius:10px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.photo img:hover{
+  transform:scale(1.02);
 }
 
 .photo p{
+  text-align:center;
   opacity:0.7;
   font-size:14px;
+}
+
+/* LIGHTBOX */
+#lightbox{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.95);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+#lightbox img{
+  max-width:95%;
+  max-height:95%;
+  border-radius:10px;
 }
 </style>
 </head>
@@ -82,90 +109,80 @@ button:hover{background:#2a2a2a;}
 
 <nav>
   <a href="index.html">Home</a>
+  <a href="portfolio.html">Portfolio</a>
   <a href="gallery.html">Gallery</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
 </nav>
 
 <h1>Gallery</h1>
 
-<!-- LEVEL 1: COUNTRIES -->
 <div class="menu">
-  <button onclick="show('ethiopia')">Ethiopia</button>
-  <button onclick="show('kenya')">Kenya</button>
   <button onclick="show('namibia')">Namibia</button>
+  <button onclick="show('kenya')">Kenya</button>
+  <button onclick="show('ethiopia')">Ethiopia</button>
 </div>
 
-<!-- ETHIOPIA -->
-<div id="ethiopia" class="section active">
+<!-- NAMIBIA -->
+<div id="namibia" class="section active">
+  <div class="grid">
 
-  <h2>Ethiopia</h2>
-
-  <!-- LEVEL 2 -->
-  <div class="submenu">
-    <button onclick="showSub('ethiopia-volcano')">Volcanoes</button>
-    <button onclick="showSub('ethiopia-wildlife')">Wildlife</button>
-  </div>
-
-  <!-- VOLCANOES -->
-  <div id="ethiopia-volcano" class="subsection active">
-    <div class="grid">
-
-      <div class="photo">
-        <img src="Tido.jpg">
-        <p>Volcano 1</p>
-      </div>
-
-      <div class="photo">
-        <img src="Tido.jpg">
-        <p>Volcano 2</p>
-      </div>
-
+    <div class="photo">
+      <img src="Brukkaros.jpg" onclick="openLightbox(this.src)">
+      <p>Brukkaros Volcano</p>
     </div>
-  </div>
 
-  <!-- WILDLIFE -->
-  <div id="ethiopia-wildlife" class="subsection">
-    <div class="grid">
-
-      <div class="photo">
-        <img src="Tido.jpg">
-        <p>Wildlife 1</p>
-      </div>
-
-      <div class="photo">
-        <img src="Tido.jpg">
-        <p>Wildlife 2</p>
-      </div>
-
+    <div class="photo">
+      <img src="Kolmanskop.jpg" onclick="openLightbox(this.src)">
+      <p>Kolmanskop</p>
     </div>
-  </div>
 
+    <div class="photo">
+      <img src="Kolmanskop (1).jpg" onclick="openLightbox(this.src)">
+      <p>Desert Houses</p>
+    </div>
+
+    <div class="photo">
+      <img src="Kolmanskop (2).jpg" onclick="openLightbox(this.src)">
+      <p>Sand Interior</p>
+    </div>
+
+  </div>
 </div>
 
 <!-- KENYA -->
 <div id="kenya" class="section">
-
-  <h2>Kenya</h2>
   <div class="grid">
-    <div class="photo">
-      <img src="Kenya1.jpg">
-      <p>Kenya Scene</p>
-    </div>
-  </div>
 
+    <div class="photo">
+      <img src="Kenya1.jpg" onclick="openLightbox(this.src)">
+      <p>Kenya Landscape</p>
+    </div>
+
+    <div class="photo">
+      <img src="Kenya2.jpg" onclick="openLightbox(this.src)">
+      <p>Kenya Wildlife</p>
+    </div>
+
+  </div>
 </div>
 
-<!-- NAMIBIA -->
-<div id="namibia" class="section">
-
-  <h2>Namibia</h2>
+<!-- ETHIOPIA -->
+<div id="ethiopia" class="section">
   <div class="grid">
-    <div class="photo">
-      <img src="Brukkaros.jpg">
-      <p>Namibia Scene</p>
-    </div>
-  </div>
 
+    <div class="photo">
+      <img src="Tido.jpg" onclick="openLightbox(this.src)">
+      <p>Ethiopia Scene</p>
+    </div>
+
+  </div>
 </div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+  <img id="lightboxImg">
+</div>a
 
 <script>
 function show(id){
@@ -173,18 +190,17 @@ function show(id){
     s.classList.remove('active');
   });
   document.getElementById(id).classList.add('active');
-
-  // reset sub
-  document.querySelectorAll('.subsection').forEach(s=>{
-    s.classList.remove('active');
-  });
 }
 
-function showSub(id){
-  document.querySelectorAll('.subsection').forEach(s=>{
-    s.classList.remove('active');
-  });
-  document.getElementById(id).classList.add('active');
+/* OPEN */
+function openLightbox(src){
+  document.getElementById("lightbox").style.display = "flex";
+  document.getElementById("lightboxImg").src = src;
+}
+
+/* CLOSE */
+function closeLightbox(){
+  document.getElementById("lightbox").style.display = "none";
 }
 </script>
 
