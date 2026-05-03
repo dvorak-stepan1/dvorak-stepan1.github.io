@@ -8,12 +8,13 @@
 <style>
 body{
   margin:0;
-  font-family:Arial;
+  font-family:Arial, sans-serif;
   background:#0b0b0b;
   color:white;
   text-align:center;
 }
 
+/* NAV */
 nav{
   padding:20px;
   border-bottom:1px solid #222;
@@ -26,45 +27,63 @@ nav a{
   opacity:0.7;
 }
 
-nav a:hover{opacity:1;}
+nav a:hover{
+  opacity:1;
+}
 
+/* TITLE */
+h1{
+  margin-top:30px;
+}
+
+/* TILES */
 .menu{
-  margin-top:40px;
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin:40px 20px;
 }
 
 .menu button{
   background:#161616;
   color:white;
   border:none;
-  padding:12px 20px;
-  margin:10px;
-  border-radius:8px;
+  padding:18px 28px;
+  border-radius:10px;
   cursor:pointer;
+  font-size:16px;
+  transition:0.25s;
 }
 
 .menu button:hover{
-  background:#222;
+  background:#2a2a2a;
+  transform:scale(1.05);
 }
 
+/* CONTENT SECTIONS */
 .section{
   display:none;
-  padding:40px 20px;
+  padding:30px 20px;
 }
 
-.active{
+.section.active{
   display:block;
 }
 
+/* IMAGES */
 img{
   max-width:80%;
-  border-radius:10px;
+  border-radius:12px;
   margin:10px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="index.html">Home</a>
   <a href="portfolio.html">Portfolio</a>
@@ -75,33 +94,37 @@ img{
 
 <h1>Gallery</h1>
 
-<!-- MENU -->
+<!-- CLICKABLE TILES -->
 <div class="menu">
   <button onclick="show('namibia')">Namibia</button>
   <button onclick="show('kenya')">Kenya</button>
   <button onclick="show('ethiopia')">Ethiopia</button>
 </div>
 
-<!-- SECTIONS -->
-
+<!-- NAMIBIA -->
 <div id="namibia" class="section active">
   <h2>Namibia</h2>
-  <img src="Brukkaros.jpg">
+  <img src="Brukkaros.jpg" alt="Namibia photo 1">
 </div>
 
+<!-- KENYA -->
 <div id="kenya" class="section">
   <h2>Kenya</h2>
-  <img src="Kenya1.jpg">
+  <img src="Kenya1.jpg" alt="Kenya photo 1">
 </div>
 
+<!-- ETHIOPIA -->
 <div id="ethiopia" class="section">
   <h2>Ethiopia</h2>
-  <img src="Tido.jpg">
+  <img src="Tido.jpg" alt="Ethiopia photo 1">
 </div>
 
+<!-- JS SWITCH -->
 <script>
 function show(id){
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(el => {
+    el.classList.remove('active');
+  });
   document.getElementById(id).classList.add('active');
 }
 </script>
