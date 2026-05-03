@@ -8,35 +8,31 @@
 <style>
 body{
   margin:0;
-  font-family:Arial, sans-serif;
+  font-family:Arial;
   background:#0b0b0b;
   color:white;
 }
 
 nav{
   padding:20px;
-  border-bottom:1px solid #222;
   text-align:center;
+  border-bottom:1px solid #222;
 }
 
 nav a{
   color:white;
   margin:0 12px;
   text-decoration:none;
-  opacity:0.7;
 }
-
-nav a:hover{opacity:1;}
 
 h1{
   text-align:center;
-  margin-top:30px;
 }
 
-.menu, .submenu{
+.menu,.submenu{
   display:flex;
   justify-content:center;
-  gap:15px;
+  gap:12px;
   flex-wrap:wrap;
   margin:20px;
 }
@@ -45,13 +41,9 @@ button{
   background:#161616;
   color:white;
   border:none;
-  padding:12px 18px;
+  padding:10px 16px;
   border-radius:10px;
   cursor:pointer;
-}
-
-button:hover{
-  background:#2a2a2a;
 }
 
 .section{display:none;}
@@ -61,11 +53,11 @@ button:hover{
 .subsection.active{display:block;}
 
 .grid{
-  max-width:1100px;
-  margin:0 auto;
+  max-width:1000px;
+  margin:auto;
   display:grid;
-  grid-template-columns:repeat(2, 1fr);
-  gap:20px;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
   padding:20px;
 }
 
@@ -77,24 +69,14 @@ button:hover{
   cursor:pointer;
 }
 
-.photo p{
-  text-align:center;
-  opacity:0.7;
-  font-size:14px;
-}
-
 /* LIGHTBOX */
 #lightbox{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.95);
+  inset:0;
+  background:black;
   display:none;
   justify-content:center;
   align-items:center;
-  z-index:999;
 }
 
 #lightbox img{
@@ -107,9 +89,8 @@ button:hover{
 <body>
 
 <nav>
-  <a href="index.html">Home</a>
-  <a href="portfolio.html">Portfolio</a>
-  <a href="gallery.html">Gallery</a>
+  <a href="#">Home</a>
+  <a href="#">Gallery</a>
 </nav>
 
 <h1>Gallery</h1>
@@ -123,41 +104,29 @@ button:hover{
 <!-- NAMIBIA -->
 <div id="namibia" class="section active">
   <div class="grid">
-
     <div class="photo">
-      <img src="Brukkaros.jpg" onclick="openLightbox('Brukkaros.jpg')">
-      <p>Brukkaros Volcano</p>
+      <img src="Brukkaros.jpg" onclick="openLightbox(this.src)">
     </div>
-
     <div class="photo">
-      <img src="Kolmanskop.jpg" onclick="openLightbox('Kolmanskop.jpg')">
-      <p>Kolmanskop</p>
+      <img src="Kolmanskop.jpg" onclick="openLightbox(this.src)">
     </div>
-
   </div>
 </div>
 
 <!-- KENYA -->
 <div id="kenya" class="section">
   <div class="grid">
-
     <div class="photo">
-      <img src="Kenya1.jpg" onclick="openLightbox('Kenya1.jpg')">
-      <p>Kenya Landscape</p>
+      <img src="Kenya1.jpg" onclick="openLightbox(this.src)">
     </div>
-
     <div class="photo">
-      <img src="Kenya2.jpg" onclick="openLightbox('Kenya2.jpg')">
-      <p>Kenya Wildlife</p>
+      <img src="Kenya2.jpg" onclick="openLightbox(this.src)">
     </div>
-
   </div>
 </div>
 
 <!-- ETHIOPIA -->
 <div id="ethiopia" class="section">
-
-  <h2 style="text-align:center;">Ethiopia</h2>
 
   <div class="submenu">
     <button onclick="showSub('volcanoes')">Volcanoes</button>
@@ -165,45 +134,33 @@ button:hover{
     <button onclick="showSub('wildlife')">Wildlife</button>
   </div>
 
-  <!-- VOLCANOES -->
   <div id="volcanoes" class="subsection active">
     <div class="grid">
       <div class="photo">
-        <img src="Bishoftu.jpg" onclick="openLightbox('Bishoftu.jpg')">
-        <p>Bishoftu Volcano</p>
+        <img src="Bishoftu.jpg" onclick="openLightbox(this.src)">
       </div>
-
       <div class="photo">
-        <img src="Bode-Ameda.jpg" onclick="openLightbox('Bode-Ameda.jpg')">
-        <p>Bode Ameda</p>
+        <img src="Bode-Ameda.jpg" onclick="openLightbox(this.src)">
       </div>
     </div>
   </div>
 
-  <!-- LANDSCAPE -->
   <div id="landscape" class="subsection">
     <div class="grid">
       <div class="photo">
-        <img src="Tido.jpg" onclick="openLightbox('Tido.jpg')">
-        <p>Landscape</p>
+        <img src="Tido.jpg" onclick="openLightbox(this.src)">
       </div>
     </div>
   </div>
 
-  <!-- WILDLIFE -->
   <div id="wildlife" class="subsection">
     <div class="grid">
-
       <div class="photo">
-        <img src="stork.jpg" onclick="openLightbox('stork.jpg')">
-        <p>Stork</p>
+        <img src="stork.jpg" onclick="openLightbox(this.src)">
       </div>
-
       <div class="photo">
-        <img src="flamingos.jpg" onclick="openLightbox('flamingos.jpg')">
-        <p>Flamingos</p>
+        <img src="flamingos.jpg" onclick="openLightbox(this.src)">
       </div>
-
     </div>
   </div>
 
@@ -216,16 +173,17 @@ button:hover{
 
 <script>
 function show(id){
-  document.querySelectorAll('.section').forEach(s=>{
-    s.classList.remove('active');
-  });
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+
+  // reset subcategory always
+  document.querySelectorAll('.subsection').forEach(s=>s.classList.remove('active'));
+  let first = document.querySelector('#'+id+' .subsection');
+  if(first) first.classList.add('active');
 }
 
 function showSub(id){
-  document.querySelectorAll('.subsection').forEach(s=>{
-    s.classList.remove('active');
-  });
+  document.querySelectorAll('.subsection').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 
