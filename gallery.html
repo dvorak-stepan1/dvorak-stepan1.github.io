@@ -107,11 +107,12 @@ button:hover{
   z-index:999;
 }
 
+/* 👇 TADY JE TEN FIX */
 #lightbox img{
   width:auto;
   height:auto;
-  max-width:1200px;   /* 👈 KLÍČOVÉ - omezení velikosti */
-  max-height:85vh;
+  max-width:800px;   /* MENŠÍ */
+  max-height:80vh;
   border-radius:10px;
 }
 </style>
@@ -129,7 +130,6 @@ button:hover{
 
 <h1>Gallery</h1>
 
-<!-- MAIN MENU -->
 <div class="menu">
   <button onclick="show('namibia')">Namibia</button>
   <button onclick="show('kenya')">Kenya</button>
@@ -201,24 +201,20 @@ button:hover{
   <!-- LANDSCAPE -->
   <div id="landscape" class="subsection">
     <div class="grid">
-
       <div class="photo">
         <img src="Tido.jpg" onclick="openLightbox('Tido.jpg')">
         <p>Landscape</p>
       </div>
-
     </div>
   </div>
 
   <!-- WILDLIFE -->
   <div id="wildlife" class="subsection">
     <div class="grid">
-
       <div class="photo">
         <img src="Tido.jpg" onclick="openLightbox('Tido.jpg')">
         <p>Wildlife</p>
       </div>
-
     </div>
   </div>
 
