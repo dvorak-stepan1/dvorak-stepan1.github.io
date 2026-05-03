@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gallery</title>
 
 <style>
@@ -13,6 +14,11 @@ body{
   text-align:center;
 }
 
+nav{
+  padding:20px;
+  border-bottom:1px solid #222;
+}
+
 nav a{
   color:white;
   margin:0 12px;
@@ -22,10 +28,37 @@ nav a{
 
 nav a:hover{opacity:1;}
 
+.menu{
+  margin-top:40px;
+}
+
+.menu button{
+  background:#161616;
+  color:white;
+  border:none;
+  padding:12px 20px;
+  margin:10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.menu button:hover{
+  background:#222;
+}
+
+.section{
+  display:none;
+  padding:40px 20px;
+}
+
+.active{
+  display:block;
+}
+
 img{
   max-width:80%;
   border-radius:10px;
-  margin-top:40px;
+  margin:10px;
 }
 </style>
 </head>
@@ -42,7 +75,36 @@ img{
 
 <h1>Gallery</h1>
 
-<img src="Tido.jpg">
+<!-- MENU -->
+<div class="menu">
+  <button onclick="show('namibia')">Namibia</button>
+  <button onclick="show('kenya')">Kenya</button>
+  <button onclick="show('ethiopia')">Ethiopia</button>
+</div>
+
+<!-- SECTIONS -->
+
+<div id="namibia" class="section active">
+  <h2>Namibia</h2>
+  <img src="Tido.jpg">
+</div>
+
+<div id="kenya" class="section">
+  <h2>Kenya</h2>
+  <img src="Tido.jpg">
+</div>
+
+<div id="ethiopia" class="section">
+  <h2>Ethiopia</h2>
+  <img src="Tido.jpg">
+</div>
+
+<script>
+function show(id){
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+</script>
 
 </body>
 </html>
