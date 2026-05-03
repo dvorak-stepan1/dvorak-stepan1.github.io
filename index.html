@@ -2,133 +2,51 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Štěpán Dvořák Photography</title>
 
 <style>
 body{
   margin:0;
-  font-family:Arial, sans-serif;
+  font-family:Arial;
   background:#0b0b0b;
   color:white;
+  text-align:center;
 }
 
-/* NAV */
 nav{
-  display:flex;
-  justify-content:center;
-  gap:20px;
   padding:20px;
   border-bottom:1px solid #222;
 }
 
-nav button{
-  background:none;
-  border:none;
+nav a{
   color:white;
+  margin:0 12px;
+  text-decoration:none;
   opacity:0.7;
-  cursor:pointer;
-  font-size:14px;
 }
 
-nav button:hover{
-  opacity:1;
-}
+nav a:hover{opacity:1;}
 
-/* PAGES */
-.page{
-  display:none;
-  padding:60px 20px;
-  text-align:center;
-}
-
-.active{
-  display:block;
-}
-
-/* HOME TILES */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-  max-width:900px;
-  margin:50px auto;
-}
-
-.card{
-  background:#161616;
-  padding:40px;
-  border-radius:12px;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.card:hover{
-  transform:scale(1.05);
-  background:#222;
-}
-
-/* IMAGE */
-img{
-  max-width:80%;
-  border-radius:10px;
+header{
+  padding:120px 20px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <nav>
-  <button onclick="show('home')">Home</button>
-  <button onclick="show('portfolio')">Portfolio</button>
-  <button onclick="show('gallery')">Gallery</button>
-  <button onclick="show('about')">About</button>
-  <button onclick="show('contact')">Contact</button>
+  <a href="index.html">Home</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
 </nav>
 
-<!-- HOME -->
-<div id="home" class="page active">
+<header>
   <h1>Štěpán Dvořák Photography</h1>
-
-  <div class="grid">
-    <div class="card" onclick="show('portfolio')">Portfolio</div>
-    <div class="card" onclick="show('gallery')">Gallery</div>
-    <div class="card" onclick="show('about')">About</div>
-    <div class="card" onclick="show('contact')">Contact</div>
-  </div>
-</div>
-
-<!-- PORTFOLIO -->
-<div id="portfolio" class="page">
-  <h1>Portfolio</h1>
-  <img src="Tido.jpg">
-</div>
-
-<!-- GALLERY -->
-<div id="gallery" class="page">
-  <h1>Gallery</h1>
-  <img src="Tido.jpg">
-</div>
-
-<!-- ABOUT -->
-<div id="about" class="page">
-  <h1>About</h1>
-  <p>Geologist and photographer focused on landscapes and light.</p>
-</div>
-
-<!-- CONTACT -->
-<div id="contact" class="page">
-  <h1>Contact</h1>
-  <p>dvorakste@natur.cuni.cz</p>
-</div>
-
-<script>
-function show(page){
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById(page).classList.add('active');
-}
-</script>
+  <p>Landscape & Documentary Photography</p>
+</header>
 
 </body>
 </html>
