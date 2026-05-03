@@ -80,9 +80,14 @@ button:hover{
   object-fit:cover;
   border-radius:12px;
   cursor:pointer;
+  transition:0.2s;
 }
 
-/* LIGHTBOX FULLSCREEN */
+.photo img:hover{
+  transform:scale(1.03);
+}
+
+/* LIGHTBOX */
 #lightbox{
   position:fixed;
   top:0;
@@ -96,9 +101,8 @@ button:hover{
   z-index:999;
 }
 
+/* 👉 ORIGINÁL KVALITA (bez omezení velikosti) */
 #lightbox img{
-  max-width:100%;
-  max-height:100%;
   width:auto;
   height:auto;
 }
@@ -155,8 +159,6 @@ button:hover{
 
 <!-- ETHIOPIA -->
 <div id="ethiopia" class="section">
-
-  <h2 style="text-align:center;">Ethiopia</h2>
 
   <div class="submenu">
     <button onclick="showSub('volcanoes')">Volcanoes</button>
