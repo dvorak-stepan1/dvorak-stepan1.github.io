@@ -31,12 +31,11 @@ nav a:hover{
   opacity:1;
 }
 
-/* TITLE */
 h1{
   margin-top:30px;
 }
 
-/* BUTTON MENU */
+/* BUTTONS */
 .menu{
   display:flex;
   justify-content:center;
@@ -64,25 +63,33 @@ h1{
 /* SECTIONS */
 .section{
   display:none;
-  padding:30px 20px;
+  padding:20px;
 }
 
 .section.active{
   display:block;
 }
 
-/* PHOTO GRID */
+/* ⭐ GRID = 2 FOTKY VEDLE SEBE */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:20px;
+  max-width:1000px;
+  margin:0 auto;
+}
+
+/* každá fotka */
 .photo{
-  width:45%;
-  display:inline-block;
-  vertical-align:top;
-  margin:10px;
+  background:#111;
+  padding:10px;
+  border-radius:12px;
 }
 
 .photo img{
   width:100%;
-  border-radius:12px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+  border-radius:10px;
+  display:block;
 }
 
 .photo p{
@@ -95,7 +102,6 @@ h1{
 
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="index.html">Home</a>
   <a href="portfolio.html">Portfolio</a>
@@ -106,7 +112,6 @@ h1{
 
 <h1>Gallery</h1>
 
-<!-- MENU BUTTONS -->
 <div class="menu">
   <button onclick="show('namibia')">Namibia</button>
   <button onclick="show('kenya')">Kenya</button>
@@ -118,26 +123,29 @@ h1{
 
   <h2>Namibia</h2>
 
-  <div class="photo">
-    <img src="Brukkaros.jpg">
-    <p>Brukkaros Volcano</p>
-  </div>
+  <div class="grid">
 
-  <div class="photo">
-    <img src="Kolmanskop.jpg">
-    <p>Kolmanskop Desert Town</p>
-  </div>
+    <div class="photo">
+      <img src="Brukkaros.jpg">
+      <p>Brukkaros Volcano</p>
+    </div>
 
-  <div class="photo">
-    <img src="Kolmanskop (1).jpg">
-    <p>Sand Houses</p>
-  </div>
+    <div class="photo">
+      <img src="Kolmanskop.jpg">
+      <p>Kolmanskop Desert Town</p>
+    </div>
 
-  <div class="photo">
-    <img src="Kolmanskop (2).jpg">
-    <p>Abandoned Interior</p>
-  </div>
+    <div class="photo">
+      <img src="Kolmanskop (1).jpg">
+      <p>Sand Houses</p>
+    </div>
 
+    <div class="photo">
+      <img src="Kolmanskop (2).jpg">
+      <p>Abandoned Interior</p>
+    </div>
+
+  </div>
 </div>
 
 <!-- KENYA -->
@@ -145,11 +153,19 @@ h1{
 
   <h2>Kenya</h2>
 
-  <div class="photo">
-    <img src="Kenya1.jpg">
-    <p>Kenya Landscape</p>
-  </div>
+  <div class="grid">
 
+    <div class="photo">
+      <img src="Kenya1.jpg">
+      <p>Kenya Landscape</p>
+    </div>
+
+    <div class="photo">
+      <img src="Kenya2.jpg">
+      <p>Kenya Wildlife</p>
+    </div>
+
+  </div>
 </div>
 
 <!-- ETHIOPIA -->
@@ -157,16 +173,24 @@ h1{
 
   <h2>Ethiopia</h2>
 
-  <div class="photo">
-    <img src="Tido.jpg">
-    <p>Ethiopia Scene</p>
-  </div>
+  <div class="grid">
 
+    <div class="photo">
+      <img src="Tido.jpg">
+      <p>Ethiopia Scene</p>
+    </div>
+
+    <div class="photo">
+      <img src="Ethiopia2.jpg">
+      <p>Highlands</p>
+    </div>
+
+  </div>
 </div>
 
 <script>
 function show(id){
-  document.querySelectorAll('.section').forEach(el => {
+  document.querySelectorAll('.section').forEach(el=>{
     el.classList.remove('active');
   });
   document.getElementById(id).classList.add('active');
